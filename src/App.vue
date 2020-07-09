@@ -47,7 +47,16 @@
         </div> -->
 
         <!-- input 组件的使用 -->
-        <hm-input placeholder="请填写zzzz" type="password" disabled="true"></hm-input>
+        <!-- <hm-input placeholder="请填写zzzz" type="password" disabled></hm-input>
+        <hm-input placeholder="请填写zzzz"></hm-input> -->
+
+        <!-- v-model 就是一个语法糖 等价于 :value="usernema" @input="username=$event.target.value" -->
+        <!-- <input type="text" v-model="username"> -->
+
+        <!-- 下面这句是 <hm-input :value="username" @input="username=$event.target.value"></hm-input> 的缩写 -->
+        <hm-input placeholder="请输入用户名" v-model="username1" clearable @input="clear"></hm-input>  
+        <hm-input placeholder="请输入用户名" type="text" v-model="username2"></hm-input>
+        <hm-input placeholder="请输入密码" type="password" v-model="username3" show-password></hm-input>
     </div>
 </template>
 
@@ -56,6 +65,9 @@ export default {
     data() {
         return {
             visible: true,
+            username1: '',
+            username2: '',
+            username3: ''
         }
     },
     methods: {
@@ -70,6 +82,10 @@ export default {
         },
         openDialog() {
             this.visible = true
+        },
+        clear(value) {
+            console.log(value);
+            this.username=value
         }
     }
 }

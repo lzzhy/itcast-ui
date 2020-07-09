@@ -1,7 +1,11 @@
 <!-- 组件说明 -->
 <template>
-    <div class="hm-input">
-        <input class="hm-input__inner" :placeholder="placeholder" :type="type" :style={}> 
+    <div class="hm-input" :class="{'hm-input--suffix': showSuffix}">
+        <input class="hm-input__inner" :class="{'is-disabled': disabled}" :placeholder="placeholder" :type="showPassword ? (passwordVisible ? 'text' : 'password') : type" :disabled="disabled" :value="value" @input="handleinput"> 
+        <span class="hm-input__suffix">
+            <i class="iconfont iconqingkong" v-if="clearable" @click="clear"></i>
+            <i class="iconfont iconyanjing" v-if="showPassword" @click="handlePassword" :class="{'iconyanjing-active': passwordVisible}"></i>
+        </span>
     </div>
 </template>
 
@@ -17,6 +21,22 @@ export default {
         type: {
             type: String,
             default: 'text'
+        },
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        value: {
+            type: String,
+            default: ''
+        },
+        clearable: {
+            type: Boolean,
+            default: false
+        },
+        showPassword: {
+            type: Boolean,
+            default: false
         }
     },
     components: {
@@ -24,14 +44,25 @@ export default {
     },
     data () {
         return {
-
+            // 用于控制是否显示密码框
+            passwordVisible: false
         };
     },
     computed: {
-
+        showSuffix() {
+            return this.clearable || this.showPassword
+        }
     },
     methods: {
-
+        handleinput(e) {
+            this.$emit('input',e.target.value)
+        },
+        clear() {
+            this.$emit('input','')
+        },
+        handlePassword() {
+            this.passwordVisible = !this.passwordVisible
+        }
     },
     created() {
         console.log(this.placeholder);
@@ -51,7 +82,7 @@ export default {
 
 <style lang='scss' scoped>
 .hm-input {
-    width: 30%;
+    width: 200px;
     position: relative;
     font-size: 14px;
     display: inline-block;
@@ -74,6 +105,39 @@ export default {
         &:focus {
             outline: none;
             border-color: #409eff;
+        }
+        &.is-disabled {
+            background: #f5f7fa;
+            border-color: #e4e7ed;
+            color: #c0c4cc;
+            cursor: not-allowed;
+        }
+    }
+}
+.hm-input--suffix {
+    .hm-input__inner {
+        padding-right: 30px;
+    }
+    .hm-input__suffix {
+        position: relative;
+        height: 100%;
+        right: 10px;
+        top: 0;
+        line-height: 40px;
+        text-align: center;
+        color: #c0c4cc;
+        transition: all .3s;
+        z-index: 900;
+        i {
+            position: absolute;
+            right: 0;
+            color: #c0c4cc;
+            font-size: 14px;
+            cursor: pointer;
+            transition: color .2s cubic-bezier(.645,.045,.355,1);
+        }
+        .iconyanjing-active {
+            color: red;
         }
     }
 }
