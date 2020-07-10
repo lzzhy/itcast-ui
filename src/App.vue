@@ -54,9 +54,12 @@
         <!-- <input type="text" v-model="username"> -->
 
         <!-- 下面这句是 <hm-input :value="username" @input="username=$event.target.value"></hm-input> 的缩写 -->
-        <hm-input placeholder="请输入用户名" v-model="username1" clearable @input="clear"></hm-input>  
+        <!-- <hm-input placeholder="请输入用户名" v-model="username1" clearable @input="clear"></hm-input>  
         <hm-input placeholder="请输入用户名" type="text" v-model="username2"></hm-input>
-        <hm-input placeholder="请输入密码" type="password" v-model="username3" show-password></hm-input>
+        <hm-input placeholder="请输入密码" type="password" v-model="username3" show-password></hm-input> -->
+
+        <hm-switch v-model="active1"></hm-switch>
+        <hm-switch v-model="active2" active-color="red" inactive-color="green" name="username"></hm-switch>
     </div>
 </template>
 
@@ -67,7 +70,10 @@ export default {
             visible: true,
             username1: '',
             username2: '',
-            username3: ''
+            username3: '',
+            active1: false,
+            active2: false,
+            username: '哈哈哈哈'
         }
     },
     methods: {
