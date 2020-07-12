@@ -1,5 +1,7 @@
 从0到1封装组件库 指令形式
 
+封装了 button,dialog,input,switch,radio 等组件
+
 以下以 button 为例
 
 ### 创建项目并运行起来

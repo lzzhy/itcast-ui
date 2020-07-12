@@ -58,8 +58,11 @@
         <hm-input placeholder="请输入用户名" type="text" v-model="username2"></hm-input>
         <hm-input placeholder="请输入密码" type="password" v-model="username3" show-password></hm-input> -->
 
-        <hm-switch v-model="active1"></hm-switch>
-        <hm-switch v-model="active2" active-color="red" inactive-color="green" name="username"></hm-switch>
+        <!-- <hm-switch v-model="active1"></hm-switch>
+        <hm-switch v-model="active2" active-color="red" inactive-color="green" name="username"></hm-switch> -->
+
+        <hm-radio label="1" v-model="gender">男</hm-radio>
+        <hm-radio label="0" v-model="gender">女</hm-radio>
     </div>
 </template>
 
@@ -73,7 +76,8 @@ export default {
             username3: '',
             active1: false,
             active2: false,
-            username: '哈哈哈哈'
+            username: '哈哈哈哈',
+            gender: ''
         }
     },
     methods: {
