@@ -1,6 +1,6 @@
 <!-- 组件说明 -->
 <template>
-    <label class="hm-radio" :class="{'is-checked': label === value}">
+    <label class="hm-radio" :class="{'is-checked': label === model}">
         <span class="hm-radio__input">
             <div class="hm-radio__inner"></div>
             <input type="radio" class="hm-radio__original" :value="label" :name="name" v-model="model">
@@ -17,6 +17,11 @@
 //import x from ''
 export default {
     name: 'hm-radio',
+    inject: {
+        RadioGroup: {
+            default: ''
+        }
+    },
     props: {
         label: {
             type: [String,Number,Boolean],
@@ -39,12 +44,18 @@ export default {
     computed: {
         model: {
             get() {
-                return this.value
+                // return this.value
+                return this.isGroup ? this.RadioGroup.value : this.value
             },
             // 因为不能违反单向数据流原则，所以在子组件中不能直接修改父组件，所以只能通过改变子组件中自己定义的model从而来控制
             set(value) {
-                this.$emit('input',value)
+                // this.$emit('input',value)
+                this.isGroup ? this.RadioGroup.$emit('input',value) : this.$emit('input',value)
             }
+        },
+        isGroup() {
+            // 用于判断radio 是否被radiogroup包裹，因为如果被包裹就要从radiogroup中拿值，如果没有被包裹就可以直接像现在这样在value中拿值
+            return !!this.RadioGroup
         }
     },
     methods: {

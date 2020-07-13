@@ -61,8 +61,13 @@
         <!-- <hm-switch v-model="active1"></hm-switch>
         <hm-switch v-model="active2" active-color="red" inactive-color="green" name="username"></hm-switch> -->
 
-        <hm-radio label="1" v-model="gender">男</hm-radio>
-        <hm-radio label="0" v-model="gender">女</hm-radio>
+        <!-- <hm-radio label="1" v-model="gender">男</hm-radio>
+        <hm-radio label="0" v-model="gender">女</hm-radio> -->
+
+        <hm-radio-group v-model="gender">
+            <hm-radio label="1">男</hm-radio>
+            <hm-radio label="0">女</hm-radio>
+        </hm-radio-group>
     </div>
 </template>
 
