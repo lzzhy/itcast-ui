@@ -8,6 +8,8 @@ import radio from './components/radio.vue'
 import radiogroup from './components/radio-group.vue'
 import checkbox from './components/checkbox.vue'
 import checkboxgroup from './components/checkbox-group.vue'
+import form from './components/form.vue'
+import formitem from './components/form-item.vue'
 
 Vue.config.productionTip = false
 
@@ -19,6 +21,8 @@ Vue.component(radio.name,radio)
 Vue.component(radiogroup.name,radiogroup)
 Vue.component(checkbox.name,checkbox)
 Vue.component(checkboxgroup.name,checkboxgroup)
+Vue.component(form.name,form)
+Vue.component(formitem.name,formitem)
 
 new Vue({
   render: h => h(App),

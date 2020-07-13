@@ -70,12 +70,21 @@
             <hm-radio label="0">女</hm-radio>
         </hm-radio-group> -->
 
-        <hm-checkbox v-model="active">是否选中</hm-checkbox>
+        <!-- <hm-checkbox v-model="active">是否选中</hm-checkbox>
         <hm-checkbox-group v-model="hobby">
             <hm-checkbox label="吃饭"></hm-checkbox>
             <hm-checkbox label="睡觉"></hm-checkbox>
             <hm-checkbox label="臭美"></hm-checkbox>
-        </hm-checkbox-group>
+        </hm-checkbox-group> -->
+
+        <hm-form :model="model" label-width="80px">
+            <hm-form-item label="用户名">
+                <hm-input placeholder="请输入用户名" v-model="username"></hm-input>
+            </hm-form-item>
+            <hm-form-item label="用户名">
+                <hm-switch v-model="active"></hm-switch>
+            </hm-form-item>
+        </hm-form>
     </div>
 </template>
 
@@ -92,7 +101,11 @@ export default {
             username: '哈哈哈哈',
             gender: '',
             active: false,
-            hobby: ['吃饭','睡觉','臭美']
+            hobby: ['吃饭','睡觉','臭美'],
+            model: {
+                username: '',
+                active: ''
+            }
         }
     },
     methods: {
