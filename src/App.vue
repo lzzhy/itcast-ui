@@ -63,11 +63,19 @@
 
         <!-- <hm-radio label="1" v-model="gender">男</hm-radio>
         <hm-radio label="0" v-model="gender">女</hm-radio> -->
-
-        <hm-radio-group v-model="gender">
+        
+        <!-- radio-group 组件 -->
+        <!-- <hm-radio-group v-model="gender">
             <hm-radio label="1">男</hm-radio>
             <hm-radio label="0">女</hm-radio>
-        </hm-radio-group>
+        </hm-radio-group> -->
+
+        <hm-checkbox v-model="active">是否选中</hm-checkbox>
+        <hm-checkbox-group v-model="hobby">
+            <hm-checkbox label="吃饭"></hm-checkbox>
+            <hm-checkbox label="睡觉"></hm-checkbox>
+            <hm-checkbox label="臭美"></hm-checkbox>
+        </hm-checkbox-group>
     </div>
 </template>
 
@@ -82,7 +90,9 @@ export default {
             active1: false,
             active2: false,
             username: '哈哈哈哈',
-            gender: ''
+            gender: '',
+            active: false,
+            hobby: ['吃饭','睡觉','臭美']
         }
     },
     methods: {
